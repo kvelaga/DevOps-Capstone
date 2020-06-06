@@ -4,7 +4,7 @@ pipeline {
 
 		stage('Lint HTML') {
 			steps {
-				sh 'tidy -q -e *.html'
+				sh 'tidy -q -e ./index.html'
 			}
 		}
 		
@@ -23,7 +23,7 @@ pipeline {
 				withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
 					sh '''
 						docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-						docker push srichakradhar/capstone
+						docker push srichakradhar/devops-capstone
 					'''
 				}
 			}
@@ -33,7 +33,7 @@ pipeline {
 			steps {
 				withAWS(region:'us-east-1', credentials:'aws-capstone') {
 					sh '''
-						kubectl config use-context arn:aws:eks:us-east-1:458133450404:cluster/capstone-eks
+						kubectl config use-context arn:aws:eks:us-east-1:458133450404:cluster/devops-capstone-eks
 					'''
 				}
 			}
