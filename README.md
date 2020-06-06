@@ -42,4 +42,4 @@ Created Jenkins master box with either Jenkins and install the plugins needed.
 Use EKS to setup the Kubernetes cluster.
 
 ### Step 4: Build and test the pipeline
-![pipeline](Screenshots/screenshot%20(16))
+![pipeline](Screenshots/screenshot%20(16).png?raw=true)
